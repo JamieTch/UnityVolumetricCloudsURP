@@ -6,9 +6,10 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
 
+// Custom cloud texture data will be provided via the material constant buffer.
+// Do not redefine the uniforms here to avoid duplicate declarations on some
+// platforms (e.g., Metal).
 TEXTURE3D(_CustomCloudTexture);
-float3 _CustomCloudCenter;
-float3 _CustomCloudSize;
 
 half3 EvaluateVolumetricCloudsAmbientProbe(half3 normalWS)
 {
