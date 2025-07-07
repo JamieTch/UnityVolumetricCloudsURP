@@ -6,7 +6,6 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
 
-TEXTURE3D(_CustomCloudTexture);
 float3 _CustomCloudCenter;
 float3 _CustomCloudSize;
 
