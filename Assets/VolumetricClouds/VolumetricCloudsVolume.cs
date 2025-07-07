@@ -117,6 +117,31 @@ public class VolumetricClouds : VolumeComponent, IPostProcessComponent
     public Vector3Parameter shapeOffset = new(Vector3.zero);
 
     /// <summary>
+    /// Optional custom 3D texture defining a single cloud density.
+    /// </summary>
+    [Tooltip("Optional custom 3D texture defining a single cloud density.")]
+    public Texture3DParameter customCloudTexture = new(null);
+
+    /// <summary>
+    /// World space center position of the custom cloud.
+    /// </summary>
+    [Tooltip("World space center position of the custom cloud.")]
+    public Vector3Parameter customCloudCenter = new(Vector3.zero);
+
+    /// <summary>
+    /// Size of the custom cloud in meters.
+    /// </summary>
+    [Tooltip("Size of the custom cloud in meters.")]
+    public Vector3Parameter customCloudSize = new(Vector3.one * 1000f);
+
+    /// <summary>
+    /// Enable rendering of the custom single cloud texture.
+    /// </summary>
+    [AdditionalProperty]
+    [Tooltip("Enable rendering of the custom single cloud texture.")]
+    public BoolParameter useCustomCloudTexture = new(false);
+
+    /// <summary>
     /// Controls the curvature of the cloud volume which defines the distance at which the clouds intersect with the horizon.
     /// </summary>
     [Tooltip("Controls the curvature of the cloud volume which defines the distance at which the clouds intersect with the horizon.")]

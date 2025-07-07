@@ -438,6 +438,9 @@ public class VolumetricCloudsURP : ScriptableRendererFeature
         private static readonly int erosionOcclusion = Shader.PropertyToID("_ErosionOcclusion");
         private static readonly int microErosionScale = Shader.PropertyToID("_MicroErosionScale");
         private static readonly int microErosionFactor = Shader.PropertyToID("_MicroErosionFactor");
+        private static readonly int customCloudTexture = Shader.PropertyToID("_CustomCloudTexture");
+        private static readonly int customCloudCenter = Shader.PropertyToID("_CustomCloudCenter");
+        private static readonly int customCloudSize = Shader.PropertyToID("_CustomCloudSize");
         private static readonly int fadeInStart = Shader.PropertyToID("_FadeInStart");
         private static readonly int fadeInDistance = Shader.PropertyToID("_FadeInDistance");
         private static readonly int multiScattering = Shader.PropertyToID("_MultiScattering");
@@ -471,6 +474,7 @@ public class VolumetricCloudsURP : ScriptableRendererFeature
 
         private const string localClouds = "_LOCAL_VOLUMETRIC_CLOUDS";
         private const string microErosion = "_CLOUDS_MICRO_EROSION";
+        private const string customCloudKeyword = "_CUSTOM_CLOUD_TEXTURE";
         private const string lowResClouds = "_LOW_RESOLUTION_CLOUDS";
         private const string cloudsAmbientProbe = "_CLOUDS_AMBIENT_PROBE";
         private const string outputCloudsDepth = "_OUTPUT_CLOUDS_DEPTH";
@@ -623,6 +627,17 @@ public class VolumetricCloudsURP : ScriptableRendererFeature
             cloudsMaterial.SetFloat(erosionOcclusion, cloudsVolume.erosionOcclusion.value);
             cloudsMaterial.SetFloat(microErosionScale, cloudsVolume.microErosionScale.value);
             cloudsMaterial.SetFloat(microErosionFactor, cloudsVolume.microErosionFactor.value);
+            if (cloudsVolume.customCloudTexture.value != null && cloudsVolume.useCustomCloudTexture.value)
+            {
+                cloudsMaterial.EnableKeyword(customCloudKeyword);
+                cloudsMaterial.SetTexture(customCloudTexture, cloudsVolume.customCloudTexture.value);
+                cloudsMaterial.SetVector(customCloudCenter, cloudsVolume.customCloudCenter.value);
+                cloudsMaterial.SetVector(customCloudSize, cloudsVolume.customCloudSize.value);
+            }
+            else
+            {
+                cloudsMaterial.DisableKeyword(customCloudKeyword);
+            }
 
             bool autoFadeIn = cloudsVolume.fadeInMode.value == VolumetricClouds.CloudFadeInMode.Automatic;
             cloudsMaterial.SetFloat(fadeInStart, autoFadeIn ? Mathf.Max(cloudsVolume.altitudeRange.value * 0.2f, camera.nearClipPlane) : Mathf.Max(cloudsVolume.fadeInStart.value, camera.nearClipPlane));

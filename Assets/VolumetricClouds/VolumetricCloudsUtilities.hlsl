@@ -6,6 +6,10 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
 
+TEXTURE3D(_CustomCloudTexture);
+float3 _CustomCloudCenter;
+float3 _CustomCloudSize;
+
 half3 EvaluateVolumetricCloudsAmbientProbe(half3 normalWS)
 {
     // Linear + constant polynomial terms
@@ -416,6 +420,12 @@ void EvaluateCloudProperties(float3 positionPS, float noiseMipOffset, float eros
     // When rendering in camera space, we still want horizontal scrolling
 #ifndef _LOCAL_VOLUMETRIC_CLOUDS
     positionPS.xz += _WorldSpaceCameraPos.xz;
+#endif
+
+#ifdef _CUSTOM_CLOUD_TEXTURE
+    float3 localPos = (positionPS - _CustomCloudCenter) / _CustomCloudSize;
+    properties.density = SAMPLE_TEXTURE3D_LOD(_CustomCloudTexture, s_trilinear_repeat_sampler, localPos, 0).r;
+    return;
 #endif
 
     // Evaluate the generic sampling coordinates
