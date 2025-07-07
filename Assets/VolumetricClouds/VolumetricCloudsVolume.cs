@@ -123,9 +123,10 @@ public class VolumetricClouds : VolumeComponent, IPostProcessComponent
     public Texture3DParameter customCloudTexture = new(null);
 
     /// <summary>
-    /// World space center position of the custom cloud.
+    /// World space center position of the custom cloud. This value is converted
+    /// to planet space internally before sampling the texture.
     /// </summary>
-    [Tooltip("World space center position of the custom cloud.")]
+    [Tooltip("World space center position of the custom cloud. This value is converted to planet space internally before sampling.")]
     public Vector3Parameter customCloudCenter = new(Vector3.zero);
 
     /// <summary>
