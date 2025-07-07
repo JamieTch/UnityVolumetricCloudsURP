@@ -6,6 +6,9 @@ Shader "Hidden/Sky/VolumetricClouds"
         [HideInInspector][NoScaleOffset] _CloudCurveTexture("Cloud LUT Curve Texture", 2D) = "white" {}
         [NoScaleOffset] _ErosionNoise("Erosion Noise Texture", 3D) = "white" {}
         [NoScaleOffset] _Worley128RGBA("Worley Noise Texture", 3D) = "white" {}
+        [NoScaleOffset] _CustomCloudTexture("Custom Cloud Texture", 3D) = "" {}
+        _CustomCloudCenter("Custom Cloud Center", Vector) = (0,0,0,0)
+        _CustomCloudSize("Custom Cloud Size", Vector) = (1,1,1,0)
         [HideInInspector] _Seed("Private: Random Seed", Float) = 0.0
         [HideInInspector] _VolumetricCloudsAmbientProbe("Ambient Probe", CUBE) = "grey" {}
         [HideInInspector] _NumPrimarySteps("Ray Steps", Float) = 32.0
@@ -78,8 +81,9 @@ Shader "Hidden/Sky/VolumetricClouds"
             
             TEXTURE2D(_CloudLutTexture);
             TEXTURE2D(_CloudCurveTexture);
-            TEXTURE3D(_Worley128RGBA);
-            TEXTURE3D(_ErosionNoise);
+           TEXTURE3D(_Worley128RGBA);
+           TEXTURE3D(_ErosionNoise);
+            TEXTURE3D(_CustomCloudTexture);
             TEXTURECUBE(_VolumetricCloudsAmbientProbe);
 
             SAMPLER(s_point_clamp_sampler);
@@ -93,6 +97,7 @@ Shader "Hidden/Sky/VolumetricClouds"
             #pragma multi_compile_local_fragment _ _OUTPUT_CLOUDS_DEPTH
             #pragma multi_compile_local_fragment _ _PHYSICALLY_BASED_SUN
             #pragma multi_compile_local_fragment _ _PERCEPTUAL_BLENDING
+            #pragma multi_compile_local_fragment _ _CUSTOM_CLOUD_TEXTURE
 
             #include "./VolumetricClouds.hlsl"
 
@@ -419,6 +424,7 @@ Shader "Hidden/Sky/VolumetricClouds"
             TEXTURE2D(_CloudCurveTexture);
             TEXTURE3D(_Worley128RGBA);
             TEXTURE3D(_ErosionNoise);
+            TEXTURE3D(_CustomCloudTexture);
             TEXTURECUBE(_VolumetricCloudsAmbientProbe);
 
             SAMPLER(s_linear_repeat_sampler);
@@ -461,6 +467,7 @@ Shader "Hidden/Sky/VolumetricClouds"
             TEXTURE2D(_CloudCurveTexture);
             TEXTURE3D(_Worley128RGBA);
             TEXTURE3D(_ErosionNoise);
+            TEXTURE3D(_CustomCloudTexture);
             TEXTURECUBE(_VolumetricCloudsAmbientProbe);
 
             SAMPLER(s_linear_repeat_sampler);
@@ -658,6 +665,7 @@ Shader "Hidden/Sky/VolumetricClouds"
             TEXTURE2D(_CloudCurveTexture);
             TEXTURE3D(_Worley128RGBA);
             TEXTURE3D(_ErosionNoise);
+            TEXTURE3D(_CustomCloudTexture);
             TEXTURECUBE(_VolumetricCloudsAmbientProbe);
 
             SAMPLER(s_point_clamp_sampler);

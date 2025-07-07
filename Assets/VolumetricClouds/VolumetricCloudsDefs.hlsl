@@ -26,6 +26,8 @@ half _ErosionFactor;
 half _ErosionOcclusion;
 half _MicroErosionScale;
 half _MicroErosionFactor;
+float3 _CustomCloudCenter;
+float3 _CustomCloudSize;
 half _FadeInStart;
 half _FadeInDistance;
 half _MultiScattering;

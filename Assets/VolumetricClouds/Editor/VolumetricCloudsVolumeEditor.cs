@@ -56,6 +56,10 @@ class VolumetricCloudsEditor : VolumeComponentEditor
     SerializedDataParameter m_ShapeFactor;
     SerializedDataParameter m_ShapeScale;
     SerializedDataParameter m_ShapeOffset;
+    SerializedDataParameter m_CustomCloudTexture;
+    SerializedDataParameter m_CustomCloudCenter;
+    SerializedDataParameter m_CustomCloudSize;
+    SerializedDataParameter m_UseCustomCloudTexture;
     SerializedDataParameter m_EarthCurvature;
     // Erosion
     SerializedDataParameter m_ErosionFactor;
@@ -163,6 +167,10 @@ class VolumetricCloudsEditor : VolumeComponentEditor
         m_ShapeFactor = Unpack(o.Find(x => x.shapeFactor));
         m_ShapeScale = Unpack(o.Find(x => x.shapeScale));
         m_ShapeOffset = Unpack(o.Find(x => x.shapeOffset));
+        m_CustomCloudTexture = Unpack(o.Find(x => x.customCloudTexture));
+        m_CustomCloudCenter = Unpack(o.Find(x => x.customCloudCenter));
+        m_CustomCloudSize = Unpack(o.Find(x => x.customCloudSize));
+        m_UseCustomCloudTexture = Unpack(o.Find(x => x.useCustomCloudTexture));
         m_EarthCurvature = Unpack(o.Find(x => x.earthCurvature));
         m_ErosionFactor = Unpack(o.Find(x => x.erosionFactor));
         m_ErosionScale = Unpack(o.Find(x => x.erosionScale));
@@ -605,6 +613,16 @@ class VolumetricCloudsEditor : VolumeComponentEditor
 
         // Additional properties
         PropertyField(m_ShapeOffset);
+        PropertyField(m_UseCustomCloudTexture);
+        PropertyField(m_CustomCloudTexture);
+        if (m_CustomCloudTexture.value.objectReferenceValue != null)
+        {
+            using (new IndentLevelScope())
+            {
+                PropertyField(m_CustomCloudCenter);
+                PropertyField(m_CustomCloudSize);
+            }
+        }
 
     #if URP_PBSKY
         if (hasVisualEnvVolume) { EditorGUILayout.HelpBox(k_EarthCurvatureMessage, MessageType.Info, wide: true);}
