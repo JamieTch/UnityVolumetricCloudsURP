@@ -41,6 +41,8 @@ half _NormalizationFactor;
 half _CloudNearPlane;
 CBUFFER_END
 
+TEXTURE3D(_CustomCloudTexture);
+
 // Ambient Probe (unity_SH)
 half4 clouds_SHAr;
 half4 clouds_SHAg;

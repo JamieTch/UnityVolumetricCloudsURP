@@ -7,8 +7,7 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
 
 
-float3 _CustomCloudCenter;
-float3 _CustomCloudSize;
+half3 EvaluateVolumetricCloudsAmbientProbe(half3 normalWS)
 
 {
     // Linear + constant polynomial terms
