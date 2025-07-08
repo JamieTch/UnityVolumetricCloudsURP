@@ -83,7 +83,6 @@ Shader "Hidden/Sky/VolumetricClouds"
             TEXTURE2D(_CloudCurveTexture);
            TEXTURE3D(_Worley128RGBA);
            TEXTURE3D(_ErosionNoise);
-            TEXTURE3D(_CustomCloudTexture);
             TEXTURECUBE(_VolumetricCloudsAmbientProbe);
 
             SAMPLER(s_point_clamp_sampler);
@@ -424,7 +423,6 @@ Shader "Hidden/Sky/VolumetricClouds"
             TEXTURE2D(_CloudCurveTexture);
             TEXTURE3D(_Worley128RGBA);
             TEXTURE3D(_ErosionNoise);
-            TEXTURE3D(_CustomCloudTexture);
             TEXTURECUBE(_VolumetricCloudsAmbientProbe);
 
             SAMPLER(s_linear_repeat_sampler);
@@ -467,7 +465,6 @@ Shader "Hidden/Sky/VolumetricClouds"
             TEXTURE2D(_CloudCurveTexture);
             TEXTURE3D(_Worley128RGBA);
             TEXTURE3D(_ErosionNoise);
-            TEXTURE3D(_CustomCloudTexture);
             TEXTURECUBE(_VolumetricCloudsAmbientProbe);
 
             SAMPLER(s_linear_repeat_sampler);
@@ -665,7 +662,6 @@ Shader "Hidden/Sky/VolumetricClouds"
             TEXTURE2D(_CloudCurveTexture);
             TEXTURE3D(_Worley128RGBA);
             TEXTURE3D(_ErosionNoise);
-            TEXTURE3D(_CustomCloudTexture);
             TEXTURECUBE(_VolumetricCloudsAmbientProbe);
 
             SAMPLER(s_point_clamp_sampler);
