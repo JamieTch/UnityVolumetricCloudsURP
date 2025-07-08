@@ -6,10 +6,10 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
 
+
 float3 _CustomCloudCenter;
 float3 _CustomCloudSize;
 
-half3 EvaluateVolumetricCloudsAmbientProbe(half3 normalWS)
 {
     // Linear + constant polynomial terms
     half3 res = SHEvalLinearL0L1(normalWS, clouds_SHAr, clouds_SHAg, clouds_SHAb);

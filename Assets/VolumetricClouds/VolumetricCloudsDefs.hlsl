@@ -58,4 +58,3 @@ half3 _SunColor;
 float4 _PlanetCenterRadius;
 #endif
 
-#endif
