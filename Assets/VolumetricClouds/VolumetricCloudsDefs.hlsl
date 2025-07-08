@@ -57,4 +57,4 @@ half3 _SunColor;
 #ifndef URP_PHYSICALLY_BASED_SKY_DEFINES_INCLUDED
 float4 _PlanetCenterRadius;
 #endif
-#endif
+
