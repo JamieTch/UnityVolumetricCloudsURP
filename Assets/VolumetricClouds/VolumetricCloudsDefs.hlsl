@@ -28,6 +28,7 @@ half _MicroErosionScale;
 half _MicroErosionFactor;
 float3 _CustomCloudCenter;
 float3 _CustomCloudSize;
+TEXTURE3D(_CustomCloudTexture);
 half _FadeInStart;
 half _FadeInDistance;
 half _MultiScattering;
@@ -56,5 +57,4 @@ half3 _SunColor;
 #ifndef URP_PHYSICALLY_BASED_SKY_DEFINES_INCLUDED
 float4 _PlanetCenterRadius;
 #endif
-
 #endif
