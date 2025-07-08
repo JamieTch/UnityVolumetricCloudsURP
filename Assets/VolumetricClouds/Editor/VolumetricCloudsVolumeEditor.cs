@@ -60,6 +60,7 @@ class VolumetricCloudsEditor : VolumeComponentEditor
     SerializedDataParameter m_CustomCloudCenter;
     SerializedDataParameter m_CustomCloudSize;
     SerializedDataParameter m_UseCustomCloudTexture;
+    SerializedDataParameter m_CustomCloudSigmaT;
     SerializedDataParameter m_EarthCurvature;
     // Erosion
     SerializedDataParameter m_ErosionFactor;
@@ -171,6 +172,7 @@ class VolumetricCloudsEditor : VolumeComponentEditor
         m_CustomCloudCenter = Unpack(o.Find(x => x.customCloudCenter));
         m_CustomCloudSize = Unpack(o.Find(x => x.customCloudSize));
         m_UseCustomCloudTexture = Unpack(o.Find(x => x.useCustomCloudTexture));
+        m_CustomCloudSigmaT = Unpack(o.Find(x => x.customCloudSigmaT));
         m_EarthCurvature = Unpack(o.Find(x => x.earthCurvature));
         m_ErosionFactor = Unpack(o.Find(x => x.erosionFactor));
         m_ErosionScale = Unpack(o.Find(x => x.erosionScale));
@@ -621,6 +623,7 @@ class VolumetricCloudsEditor : VolumeComponentEditor
             {
                 PropertyField(m_CustomCloudCenter);
                 PropertyField(m_CustomCloudSize);
+                PropertyField(m_CustomCloudSigmaT);
             }
         }
 

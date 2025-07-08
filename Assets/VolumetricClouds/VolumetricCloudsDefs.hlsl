@@ -29,6 +29,7 @@ half _MicroErosionFactor;
 float3 _CustomCloudCenter;
 float3 _CustomCloudSize;
 TEXTURE3D(_CustomCloudTexture);
+half _CustomCloudSigmaT;
 half _FadeInStart;
 half _FadeInDistance;
 half _MultiScattering;

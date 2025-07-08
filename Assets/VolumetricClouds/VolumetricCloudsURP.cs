@@ -441,6 +441,7 @@ public class VolumetricCloudsURP : ScriptableRendererFeature
         private static readonly int customCloudTexture = Shader.PropertyToID("_CustomCloudTexture");
         private static readonly int customCloudCenter = Shader.PropertyToID("_CustomCloudCenter");
         private static readonly int customCloudSize = Shader.PropertyToID("_CustomCloudSize");
+        private static readonly int customCloudSigmaT = Shader.PropertyToID("_CustomCloudSigmaT");
         private static readonly int fadeInStart = Shader.PropertyToID("_FadeInStart");
         private static readonly int fadeInDistance = Shader.PropertyToID("_FadeInDistance");
         private static readonly int multiScattering = Shader.PropertyToID("_MultiScattering");
@@ -633,6 +634,7 @@ public class VolumetricCloudsURP : ScriptableRendererFeature
                 cloudsMaterial.SetTexture(customCloudTexture, cloudsVolume.customCloudTexture.value);
                 cloudsMaterial.SetVector(customCloudCenter, cloudsVolume.customCloudCenter.value);
                 cloudsMaterial.SetVector(customCloudSize, cloudsVolume.customCloudSize.value);
+                cloudsMaterial.SetFloat(customCloudSigmaT, cloudsVolume.customCloudSigmaT.value);
             }
             else
             {

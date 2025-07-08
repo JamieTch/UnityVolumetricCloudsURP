@@ -143,6 +143,13 @@ public class VolumetricClouds : VolumeComponent, IPostProcessComponent
     public BoolParameter useCustomCloudTexture = new(false);
 
     /// <summary>
+    /// Extinction coefficient applied when sampling the custom cloud texture.
+    /// </summary>
+    [AdditionalProperty]
+    [Tooltip("Extinction coefficient applied when sampling the custom cloud texture.")]
+    public ClampedFloatParameter customCloudSigmaT = new(0.06f, 0.0f, 1.0f);
+
+    /// <summary>
     /// Controls the curvature of the cloud volume which defines the distance at which the clouds intersect with the horizon.
     /// </summary>
     [Tooltip("Controls the curvature of the cloud volume which defines the distance at which the clouds intersect with the horizon.")]

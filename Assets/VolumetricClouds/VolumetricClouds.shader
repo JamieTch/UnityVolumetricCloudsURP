@@ -9,6 +9,7 @@ Shader "Hidden/Sky/VolumetricClouds"
         [NoScaleOffset] _CustomCloudTexture("Custom Cloud Texture", 3D) = "" {}
         _CustomCloudCenter("Custom Cloud Center", Vector) = (0,0,0,0)
         _CustomCloudSize("Custom Cloud Size", Vector) = (1,1,1,0)
+        [HideInInspector] _CustomCloudSigmaT("Custom Cloud SigmaT", Float) = 0.06
         [HideInInspector] _Seed("Private: Random Seed", Float) = 0.0
         [HideInInspector] _VolumetricCloudsAmbientProbe("Ambient Probe", CUBE) = "grey" {}
         [HideInInspector] _NumPrimarySteps("Ray Steps", Float) = 32.0
