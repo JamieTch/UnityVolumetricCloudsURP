@@ -28,7 +28,7 @@ half _MicroErosionScale;
 half _MicroErosionFactor;
 float3 _CustomCloudCenter;
 float3 _CustomCloudSize;
-TEXTURE3D(_CustomCloudTexture);
+
 half _CustomCloudSigmaT;
 half _FadeInStart;
 half _FadeInDistance;
@@ -61,3 +61,4 @@ half3 _SunColor;
 float4 _PlanetCenterRadius;
 #endif
 
+#endif // URP_VOLUMETRIC_CLOUDS_DEFINES_HLSL
