@@ -89,6 +89,7 @@ Shader "Hidden/Sky/VolumetricClouds"
             SAMPLER(s_point_clamp_sampler);
             SAMPLER(s_linear_repeat_sampler);
             SAMPLER(s_trilinear_repeat_sampler);
+            SAMPLER(s_trilinear_clamp_sampler);
             SAMPLER(sampler_VolumetricCloudsAmbientProbe);
 
             #pragma multi_compile_local_fragment _ _CLOUDS_MICRO_EROSION
@@ -428,6 +429,7 @@ Shader "Hidden/Sky/VolumetricClouds"
 
             SAMPLER(s_linear_repeat_sampler);
             SAMPLER(s_trilinear_repeat_sampler);
+            SAMPLER(s_trilinear_clamp_sampler);
             SAMPLER(sampler_VolumetricCloudsAmbientProbe);
 
             TEXTURE2D_X(_VolumetricCloudsLightingTexture);
@@ -470,6 +472,7 @@ Shader "Hidden/Sky/VolumetricClouds"
 
             SAMPLER(s_linear_repeat_sampler);
             SAMPLER(s_trilinear_repeat_sampler);
+            SAMPLER(s_trilinear_clamp_sampler);
             SAMPLER(sampler_VolumetricCloudsAmbientProbe);
             
             TEXTURE2D_X(_VolumetricCloudsLightingTexture);
@@ -668,6 +671,7 @@ Shader "Hidden/Sky/VolumetricClouds"
             SAMPLER(s_point_clamp_sampler);
             SAMPLER(s_linear_repeat_sampler);
             SAMPLER(s_trilinear_repeat_sampler);
+            SAMPLER(s_trilinear_clamp_sampler);
             SAMPLER(sampler_VolumetricCloudsAmbientProbe);
 
             // Note: This pass doesn't need to support dynamic resolution

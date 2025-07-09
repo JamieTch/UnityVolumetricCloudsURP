@@ -423,8 +423,10 @@ void EvaluateCloudProperties(float3 positionPS, float noiseMipOffset, float eros
 #ifdef _CUSTOM_CLOUD_TEXTURE
     // Convert the custom cloud center from world space to planet space
     float3 customCenterPS = ConvertToPS(_CustomCloudCenter);
-    float3 localPos = (positionPS - customCenterPS) / _CustomCloudSize;
-    properties.density = SAMPLE_TEXTURE3D_LOD(_CustomCloudTexture, s_trilinear_repeat_sampler, localPos, 0).r;
+    float3 texCoords = (positionPS - customCenterPS) / _CustomCloudSize + 0.5;
+    bool inside = all(texCoords >= 0.0) && all(texCoords <= 1.0);
+    properties.density = inside ? SAMPLE_TEXTURE3D_LOD(
+        _CustomCloudTexture, s_trilinear_clamp_sampler, texCoords, 0).r : 0.0;
     properties.sigmaT = _CustomCloudSigmaT;
     return;
 #endif
